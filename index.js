@@ -3,7 +3,7 @@ import os from 'os'
 
 const express = require('express')
 const app = express()
-const parkings = require('./parkings.json')
+const parkings = require('parkings.json')
 
 // Middleware
 app.use(express.json())
