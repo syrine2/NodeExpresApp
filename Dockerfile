@@ -1,6 +1,6 @@
 FROM node:alpine
 WORKDIR /app
-EXPOSE 3000
+EXPOSE 8080
 COPY package.json package-lock.json parkings.json ./
 
 RUN npm install
