@@ -5,6 +5,14 @@ const express = require('express')
 const app = express()
 const parkings = require('parkings.json')
 
+
+app.get("/", (req, res) => {
+  const helloMessage = ` Hello from the ${os.hostname()}`
+  console.log(helloMessage)
+  res.send(helloMessage)
+})
+
+
 // Middleware
 app.use(express.json())
 
