@@ -29,6 +29,8 @@ app.use(express.json())
 
 
 app.get("/parking", (req, res) => {
+  console.log(parking)
+  parking.insertOne({ name: "parking3",type:"Area", city:"Bizerte", id:4 })
     parking.find().toArray((err, items) => {
       if (err) {
         console.error(err)
