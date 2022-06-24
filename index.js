@@ -1,19 +1,46 @@
-import express from 'express'
-import os from 'os'
+const express = require('express')
+
 
 const app = express()
-const parkings = require('parkings.json')
+const parkings = require('./parkings.json')
+const mongo = require("mongodb").MongoClient
+const url = "mongodb+srv://karima:FACbKgICbu6dBd20@clusternode.kfee5.mongodb.net/?retryWrites=true&w=majority";
 
+let db, parking
 
-app.get("/", (req, res) => {
-  const helloMessage = ` Hello from the ${os.hostname()}`
-  console.log(helloMessage)
-  res.send(helloMessage)
-})
-
-
+mongo.connect(
+  url,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
+  (err, client) => {
+    if (err) {
+      console.error(err)
+      return
+    }
+    db = client.db("parkings")
+    parking = db.collection("parking")
+   
+  }
+)
 // Middleware
 app.use(express.json())
+
+
+app.get("/parking", (req, res) => {
+    parking.find().toArray((err, items) => {
+      if (err) {
+        console.error(err)
+        res.status(500).json({ err: err })
+        return
+      }
+      res.status(200).json({ parking: items })
+    })
+  })
+
+
+
 
 app.get('/parkings', (req,res) => {
     res.status(200).json(parkings)
