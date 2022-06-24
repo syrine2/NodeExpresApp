@@ -4,8 +4,8 @@ const express = require('express')
 const app = express()
 const parkings = require('./parkings.json')
 const mongo = require("mongodb").MongoClient
-const url = "mongodb+srv://karima:FACbKgICbu6dBd20@clusternode.kfee5.mongodb.net/?retryWrites=true&w=majority";
-
+//const url = "mongodb+srv://karima:FACbKgICbu6dBd20@clusternode.kfee5.mongodb.net/?retryWrites=true&w=majority";
+const url = 'mongodb://mongo:27017';
 let db, parking
 
 mongo.connect(
