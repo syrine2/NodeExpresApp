@@ -5,18 +5,19 @@ pipeline {
     
   stages {
         
-    stage('Git') {
-      steps {
-        git 'https://github.com/KMechG/NodeExpresApp.git'
-      }
-    }
-     
-    stage('Build') {
-      steps {
-        sh 'npm install'
-         sh '<<Build Command>>'
-      }
-    }  
+        stage('Git') {
+            steps {
+                git 'https://github.com/KMechG/NodeExpresApp.git'
+            }
+        }
+        
+        stage('Build') {
+          steps {
+            sh 'npm --version'  
+            sh 'npm install'
+            
+          }
+        }  
     
             
     stage('Test') {
