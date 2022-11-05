@@ -15,10 +15,10 @@ pipeline {
         
         stage('Build') {
           steps {
-            sh 'npm --version'  
-            sh 'npm install express'
-            sh 'npm install mongo'
-            sh 'npm install mocha -g'
+            bat 'npm --version'  
+            bat 'npm install express'
+            bat 'npm install mongo'
+            bat 'npm install mocha -g'
             
           }
         }  
